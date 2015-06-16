@@ -1,0 +1,50 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<IList<NancyCRUDSample.Models.Product>>
+@{
+    Layout = "Views/Layout/Base.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">Products</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <a href="/product/new" class="btn btn-default">New</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-md-6">Name</th>
+                        <th class="col-md-2">Category</th>
+                        <th class="col-md-2">Created at</th>
+                        <th class="col-md-2"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="col-md-6">@item.Name</td>
+                            <td class="col-md-2">@item.Category.Name</td>
+                            <td class="col-md-2">@item.CreatedAt</td>
+                            <td class="col-md-2">
+                                <a href="/product/update/@item.Id" class="btn btn-xs btn-primary">Edit</a>
+                                <a href="/product/delete/@item.Id" data-method="delete" class="btn btn-xs btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <a href="/" class="btn btn-default">Back</a>
+        </div>
+    </div>
+</div>

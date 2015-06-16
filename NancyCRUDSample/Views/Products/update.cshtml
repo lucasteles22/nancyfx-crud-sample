@@ -1,0 +1,43 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<NancyCRUDSample.Models.Product>
+@{
+    Layout = "Views/Layout/Base.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">New category</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form action="/product/update" method="post" class="form-horizontal">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <label for="name">Name</label>
+                        <input name="Name" value="@Model.Name" type="text" class="form-control" placeholder="Product name">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="categoryId">Category</label>
+                        <select name="categoryId" class="form-control">
+                            Categories
+                            @foreach (var item in ViewBag.Categories)
+                            {
+                                <option @(item.Id == Model.CategoryId ? "selected" : "") value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <button class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<NancyCRUDSample.Models.Category>
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase
+@{
+    Layout = "Views/Layout/Base.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="text-center">New category</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form action="/category/new" method="post" class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <label for="name">Name</label>
+                        <input name="Name" value="@Model.Name" type="text" class="form-control" placeholder="Category name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <button class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
